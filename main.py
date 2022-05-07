@@ -5,7 +5,7 @@ print("3、查找员工信息")
 print("4、修改员工信息")
 print("5、输出员工信息表")
 print("6、退出系统")
-print("------员工管理系统-----")
+print("------员工管理系统----")
 employee = []
 while True:
     number = int(input("请输入相应的数字进行相应的操作："))
