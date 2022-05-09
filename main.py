@@ -1,93 +1,48 @@
-class Employee:
-    def __init__(self, name, gender, department, post):
-        self.name = name # 姓名
-        self.gender = gender # 性别
-        self.department = department # 所在部门
-        self.post = post # 职称
-        from prettytable import PrettyTable
-
-        class EmployeeManageSystem:
-            def __init__(self):
-                # self.employee_info 用来存储每个员工对象
-                self.employee_info = []
-
-            def menu(self):
-                """ 展示系统目录 """
-                print('=' * 25, '欢迎来到员工管理系统', '=' * 25)
-                print('%s%s' % ('1. 增加员工信息'.center(33), '2. 删除员工信息'.center(33)))
-                print('%s%s' % ('3. 查看员工信息'.center(33), '4. 修改员工信息'.center(33)))
-                print('%s' % '5. 退出系统'.center(32))
-                print('=' * 72)
-
-            def add_employee(self):
-                """ 用于增加员工信息 """
-                while True:
-                    print('-' * 29, '增加员工信息', '-' * 29)
-                    name = input('输入员工姓名：')
-                    gender = input("输入员工性别：")
-                    department = input("输入员工所在部门：")
-                    post = input("输入员工职位名称：")
-                    employee = Employee(name, gender, department, post)
-                    self.employee_info.append(employee)
-                    print('已添加')
-                    if input('是否继续?按n键结束').lower() == 'n':
-                        break
-
-            def show_employee_info(self):
-                """ 显示所有员工信息 """
-                print('-' * 29, '查看员工信息', '-' * 29)
-                table = PrettyTable()
-                table.field_names = ['序号', '姓名', '性别', '所在部门', '职位名称']
-                for index, i in enumerate(self.employee_info):
-                    table.add_row([index + 1, i.name, i.gender, i.department, i.post])
-                print(table, end='\n\n')
-                del table
-
-            def delete_employee(self):
-                """ 删除员工 """
-                while True:
-                    self.show_employee_info()
-                    print('-' * 29, '删除员工信息', '-' * 29)
-                    index = int(input('输入要删除的员工的序号: '))
-                    del self.employee_info[index - 1]
-                    print('已删除')
-                    if input('是否继续?按n键结束').lower() == 'n':
-                        break
-
-            def update_employee_info(self):
-                """ 用于修改员工信息 """
-                while True:
-                    print('-' * 29, '修改员工信息', '-' * 29)
-                    self.show_employee_info()
-                    index = int(input('输入要修改的员工的序号：')) - 1
-                    print('1.姓名\t 2.性别\t 3.所在部门\t 4.职位名称')
-                    option = input('输入要修改的序号：')
-
-                    if option == '1':
-                        self.employee_info[index].name = input('请输入姓名：')
-                    elif option == '2':
-                        self.employee_info[index].gender = input('请输入性别：')
-                    elif option == '3':
-                        self.employee_info[index].department = input('请输入所在部门：')
-                    else:
-                        self.employee_info[index].post = input('请输入职位名称：')
-
-                    print('已修改')
-                    if input('是否继续?按n键结束').lower() == 'n':
-                        break
-
-employee_manage_system = EmployeeManageSystem()
+print("------员工管理系统------")
+print("1、添加员工信息")
+print("2、删除员工信息")
+print("3、查找员工信息")
+print("4、修改员工信息")
+print("5、输出员工信息表")
+print("6、退出系统")
+print("------员工管理系统-----")
+employee = []
 while True:
-    employee_manage_system.menu()
-    index = input('选择相应的序号：')
-    if index == '5':
+    number = int(input("请输入相应的数字进行相应的操作："))
+    if number <= 0 or number > 6:
+        print("输入错误！")
         break
-    option_list = {'1': employee_manage_system.add_employee, '2': employee_manage_system.delete_employee,
-                   '3': employee_manage_system.show_employee_info, '4': employee_manage_system.update_employee_info}
-    try:
-        option_list[index]()
-    except:
-        print('输入出现问题，请重试!\n')
-
-
-
+    else:
+        if number == 1:
+            e_number = int(input("请通过要添加员工的数量："))
+            for p in range(e_number):
+                new_employee = input("请输入要添加的员工：")
+                employee.append(new_employee)
+            print(f"添加成功！已添加{e_number}个员工！")
+        elif number == 2:
+            del_employee = input("请输入要删除的员工：")
+            employee.remove(del_employee)
+            print(f"员工{del_employee}删除成功！")
+        elif number == 3:
+            search_employee = input("请输入要查找的员工：")
+            if search_employee in employee:
+                print("已查找到该员工！")
+            else:
+                print("该员工不存在！是否添加该新员工？")
+                affirm = input("请输入Y/N来确认：")
+                if affirm == "Y":
+                    employee.append(search_employee)
+                    print(f"添加成功！已添加{search_employee}员工！")
+                else:
+                    continue
+        elif number == 4:
+            mod_employee = input("请输入要修改的员工：")
+            index = employee.index(mod_employee)
+            moded_employee = input("请输入修改后的员工：")
+            employee[index] = moded_employee
+            print(f"原员工已被修改，修改后的员工为{moded_employee}")
+        elif number == 5:
+            for i in employee:
+                print(i)
+        elif number == 6:
+            break
