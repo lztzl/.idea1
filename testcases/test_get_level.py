@@ -15,7 +15,7 @@ class TestPy01():
 
 
 if __name__ == '__main__':
-    pytest.main()
+    pytest.main(["--cov=./testcases/""--cov-report=html"])
 
 
 
