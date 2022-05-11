@@ -5,7 +5,7 @@ import pytest
 from main import *
 
 
-class GetLevel(pytest.TestCase):
+class GetLevel(pytest.testcases):
 
     def test_get_level1(self):
         self.assertEquals(get_level(90), "优秀")
