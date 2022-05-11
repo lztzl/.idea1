@@ -7,10 +7,10 @@ from main import *
 
 class TestPy01():
 
-    def testPy001(self):
+    def get_level(self):
         self.assertEquals(get_level(90), "优秀")
 
-    def testPy002(self):
+    def get_level(self):
         self.assertEquals(get_level(80), "良好")
 
 
