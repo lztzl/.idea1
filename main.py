@@ -9,7 +9,7 @@ print("------员工管理系统-----")
 employee = []
 while True:
     number = int(input("请输入相应的数字进行相应的操作："))
-    if number <= 0 or number > 6:
+    if number <= 0 or number > 7:
         print("输入错误！")
         break
     else:
