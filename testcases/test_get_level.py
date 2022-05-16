@@ -38,4 +38,5 @@ class Test_哔哩登陆:
         print('\n用例 UI_003')
         alertTex=loginAndCheck(None,None)
         assert alertTex=={"请输入注册时用的邮箱或者手机号呀":"喵，你没输入密码么?"}
-
+if __name__ == '__main__':
+    pytest.main(["--cov=./testcases/""--cov-report=html"])
