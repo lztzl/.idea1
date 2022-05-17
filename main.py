@@ -29,5 +29,3 @@ class Test_Class_In():  # 定义第2个类
         assert b in a
         assert c not in a
 
-if __name__ == '__main__':
-    pytest.main(["--cov=./main.py/""--cov-report=html"])
