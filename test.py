@@ -1,6 +1,3 @@
-
-
-
 from main import *
 
 
