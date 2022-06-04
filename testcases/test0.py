@@ -1,6 +1,4 @@
 from main import *
-
-
 import pytest
 from main import triangleType
 from main import OutOfRangeError
